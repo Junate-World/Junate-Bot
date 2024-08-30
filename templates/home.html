@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% block title %}Home Page{% endblock %}
+
+{% block content %}
+<div class="reg">
+      <div class="identity2">
+        <h3>Stored Information</h3><br>
+        <ul>
+          {% for item in storage %}
+            <li id="itema">{{ item }} <a href="{{ url_for('delete', index=loop.index0) }}">Delete</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="write">
+        <p class="mission">
+          Our mission is to revolutionize how businesses interact with their data. We are dedicated to providing cutting-edge database solutions that enhance performance, ensure security, and deliver actionable insights. Our goal is to empower organizations to leverage their data for smarter decision-making and sustained growth.
+        </p>
+      </div>
+      <div class="register">
+        <form method="post" action="/store">
+          <div class="new">
+            <span class="form-item formling Store">Store Your Info</span>
+            <input class="form-item formling" type="text" placeholder="Enter Anything" name="info">
+            <button type="submit" class="form-button">Store</button>
+            <a class="form-item formly forgot" href="{{ url_for('login') }}">Go to login page</a>
+            <a class="form-item formly signup" href="#">Sign up</a>
+            
+          </div>
+        </form>
+       </div>
+   </div>
+  
+ <p>
+  <div class="row">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">For Enquiry</h5>
+          <p class="card-text">Junate is still a learner.</p>
+          <a href="#" class="btn-primary">Contact</a>
+        </div>
+    </div>
+      <div class="card card1">
+        <div class="card-body">
+          <h5 class="card-title">Junate World Quiz</h5>
+          <p class="card-text">Hit the quiz button below and enjoy a JW quiz fun.</p>
+          <a href="{{ url_for('quiz') }}" class="btn-primary">Quiz</a>
+        </div>
+    </div>
+  </div>
+  </p>
+</div>
+<div class="image">
+  <div class="img">
+    <img src="https://mimo.app/i/moon.png">
+    <img src="https://mimo.app/i/lightmode.png">
+    <img src="https://mimo.app/i/beach-dog.png">
+    <img src="https://mimo.app/i/bitcoin.png" class="bitcoin">
+    <img class="tower" src="https://mimo.app/i/eiffel.png">
+    <img class="absolute" src="https://mimo.app/i/bug.png">
+
+  </div>
+  <div class="img">
+    <img src="https://mimo.app/i/bitcoin.png" class="bitcoin">
+    <img class="tower" src="https://mimo.app/i/eiffel.png">
+    <img class="absolute" src="https://mimo.app/i/bug.png">
+    <img src="https://mimo.app/i/moon.png">
+    <img src="https://mimo.app/i/lightmode.png">
+    <img src="https://mimo.app/i/beach-dog.png">
+  </div>
+</div>
+{% endblock %}

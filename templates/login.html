@@ -1,0 +1,26 @@
+{% extends 'base.html' %}{% block title %}Login Page{% endblock %}
+{% block content %}
+<div class="reg">
+  <div class="identity">
+    <span id="JW">J</span>
+    <span id="JW2">W<em>&copy</em></span>
+  </div>
+  <div class="write">
+    <p class="mission">
+      Welcome to the login page. Please provide your registered credentials to gain access to the site. If you are not a user, feel free to hit the 'sign up' link below to get started. or hit the 'forgot password' link to request for password reset. Not functional.
+    </p>
+  </div>
+  <div class="register">
+    <form>
+      <div class="new">
+        <input class="form-item formling" type="text" placeholder="Enter Your Email">
+        <input class="form-item formling" type="password" placeholder="Enter Your Password">
+        <button class="form-button">Login</button>
+        <a class="form-item formly forgot" href="#" >forgot password?</a>
+        <a class="form-item formly signup" href="#" >Sign up</a>
+        
+      </div>
+    </form>
+   </div>
+</div>
+{% endblock %}

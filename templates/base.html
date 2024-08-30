@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Practice</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script>
+
+    </script>
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li id="nav-item">
+        <a href="/">Home</a>
+      </li>
+      <li id="nav-item">
+        <a href="{{ url_for('about') }}">About</a>
+      </li>
+      <li id="nav-item">
+        <a href="#services">Services</a>
+      </li>
+      <li id="nav-item">
+        <a href="{{ url_for('chat_page') }}">ChatBot</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+   <h1 class="design">Junate World</h1>
+    
+{% block content %}
+<!-- Your content here -->
+{% endblock %}
+
+  <div class="footer">
+      <div class="footer_list">
+        <a href="#" class="footer_item">Copyright &copy</a><span>||</span><a href="#" class="footer_item">Junate World</a><span class="jun">JW</span>
+      </div>
+   </div>
+    
+</body>
+</html>

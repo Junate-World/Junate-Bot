@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% block title %}Chat Page{% endblock %}
+
+{% block content %}
+
+<div class="reg">
+  <div class="identity3">
+
+    <div id="mimobot">
+      <img src="https://mimo.app/i/lightmode.png">
+    <strong id="juju">Junate-Bot</strong>
+    </div>
+    
+
+    <div id="chat-box"></div>
+  </div>
+  
+  <div class="register">
+    <form id="chat-form">
+      <div class="new">
+        <span class="form-item formling Store You" for="user_input"><strong>You</strong></span>
+        <input class="form-item formling" id="user_input" type="text" placeholder="Enter Your Message..." name="user_input" required>
+        <button class="form-button" type="submit">Send</button>
+        <a class="form-item formly forgot" href="{{ url_for('login') }}" >Go back to login page</a>
+        <a class="form-item formly signup" href="#" >Sign up</a>
+        
+      </div>
+    </form>
+   </div>
+</div>
+
+
+<script>
+  document.getElementById('chat-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var userInput = document.getElementById('user_input').value;
+      var chatBox = document.getElementById('chat-box');
+
+      chatBox.innerHTML += '<div><strong>You:</strong> ' + userInput + '</div><br>';
+
+      fetch('/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_input: userInput })
+      })
+      .then(response => response.json())
+      .then(data => {
+          chatBox.innerHTML += '<div class="message"><strong class="bot">Bot:</strong> ' + data.response + '</div><br>';
+          document.getElementById('user_input').value = '';
+          chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom
+
+          if (data.response.includes("I don't know the answer")) {
+              var newAnswer = prompt('Type the new answer or "skip" to skip:');
+              if (newAnswer.toLowerCase() !== 'skip') {
+                  fetch('/update_knowledge', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ user_input: userInput, new_answer: newAnswer })
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                      chatBox.innerHTML += '<div class="message2"><strong class="bot2">Bot:</strong> ' + data.response + '</div><br>';
+                      chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom
+                  });
+              }
+          }
+      });
+  });
+</script>
+
+{% endblock %}

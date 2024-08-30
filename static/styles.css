@@ -1,0 +1,375 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  flex: 1;
+}
+
+.navbar {
+  background-image: conic-gradient(from 45deg, red, yellow, gray, pink);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px 0;
+  z-index: 1000;
+
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0;
+  font-size: 12px;
+}
+
+#nav-item {
+  float: left;
+}
+
+#nav-item a{
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+#nav-item a:hover {
+  background-color: #575757;
+}
+
+
+
+
+.sidebar {
+  width: 100px;
+  background-color: #2ce692;
+  color: white;
+  height: 100vh; /* Full height /position: fixed; / Fixed sidebar */top: 0vh;
+  left: 0;
+  padding: 2px;
+  border-radius: 0 10px;
+  
+}
+
+.sidebar h2 {
+  margin-top: 0;
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin: 10px;
+}
+
+.sidebar-menu a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.sidebar-menu a:hover {
+  background-color: #575757;
+}
+
+.content {
+  margin-left: 100px;
+  padding: 15px;
+}
+
+.design{
+color: skyblue;
+font-style: italic;
+text-align: center;
+border: solid 2px gray;
+border-radius: 5px;
+margin-top: 80px;
+padding: 10px;
+background-image: conic-gradient(from 45deg, red, yellow, gray, pink);
+}
+
+
+.reg{
+ 
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.identity{
+ width: 300px;
+ height: 300px;
+ padding: 20px 0 0 20px;
+ border: solid whitesmoke;
+ border-radius: 20px;
+ margin-left: 30px;
+ display: flex;
+ flex-direction: row;
+ }
+
+ #JW, #JW2{
+  font-size: 130px;
+  color: skyblue;
+  padding: 20px 0 0 20px;
+  font-style: italic;
+ }
+
+
+em{
+  font-size: 30px;
+ }
+
+h3{
+  text-align: center;
+}
+
+.identity2{
+  width: 300px;
+  height: 300px;
+  padding: 20px 0 0 20px;
+  border: solid whitesmoke;
+  border-radius: 20px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  }
+
+#itema{
+  font-style: italic;
+}
+
+.identity3{
+  width: 800px;
+  height: 300px;
+  padding: 20px 0 0 20px;
+  border: solid white;
+  border-radius: 20px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: row;
+  }
+  
+#mimobot{
+ display: flex;
+ flex-direction: column;
+ text-align: center;
+}
+
+#chat-box{
+ border: solid 1px whitesmoke;
+ border-radius: 5px;
+ width: 600px;
+ margin: 10px;
+ padding: 10px;
+ overflow-y: auto;
+ max-height: 400px;
+}
+.message, .bot {
+  color: #6f52f3; /* Change color to distinguish bot messages */
+}
+.message2, .bot2 {
+  color: red; /* Change color to distinguish bot messages */
+}
+
+
+.write{
+  border: solid 2px whitesmoke;
+  width: 250px;
+  height: 300px;
+  padding: 20px 20px 0 20px;
+  border-radius: 20px;
+  text-align: justify;
+  
+}
+
+.register{
+display: flex;
+flex-direction: column;
+border: solid 2px skyblue;
+border-radius: 20px;
+height: 300px;
+width: 300px;
+padding: 10px;
+margin-right: 30px;
+}
+
+
+.signup{
+padding-top: 40px;
+text-align: right;
+}
+
+.new{
+display: flex;
+flex-direction: column;
+margin: 15px;
+
+}
+.form-item, button{
+border-radius: 5px;
+height: 25px;
+margin: 0 0 20px 0;
+}
+.formling{
+border: solid skyblue;
+border-radius: 5px;
+padding-left: 10px;
+}
+.Store{
+  text-align: center;
+  padding-top: 7px;
+  font-size: 14px;
+}
+
+.You{
+  border: solid white;
+}
+.form-button{
+background-color: skyblue;
+color: white;
+}
+
+.formly, .signup{
+text-decoration: none;
+}
+  
+
+
+.row{
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+}
+
+.card-body{
+border: solid skyblue;
+border-radius: 10px;
+text-align: center;
+width: 400px;
+height: 120px;
+padding: 10px;
+margin: 30px;
+}
+
+.btn-primary{
+ text-decoration: none
+}
+
+
+
+
+
+
+.img{
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+}
+
+img {
+ border: solid 2px skyblue;
+ border-radius: 20px;
+ margin: 10px;
+ width: 150px;
+ height: 150px;
+ cursor: grab;
+}
+
+.image{
+padding-bottom: 40px;
+display: flex;
+flex-direction: column;
+}
+
+.bitcoin, .tower{
+border: solid 2px gold;
+}
+
+.absolute{
+border: solid 2px #00FF00;
+clear: right;
+}
+
+
+.logo{
+background-color: blue;
+color: white;
+font-style: italic;
+border: solid blue;
+width: 30px;
+border-radius: 10px;
+margin-left: 10px;
+}
+
+.footer_list{
+  list-style-type: none;
+  margin: 10px;
+  padding: 0;
+  
+}
+.footer {
+  border: solid 2px white;
+  position: relative;
+  width: 100%;
+  bottom: auto;
+  text-align: right;
+  bottom: -35px;
+  padding: 10px 0;
+}
+
+.footer a{
+ text-decoration: none;
+}
+
+
+.jun{
+bottom: 30px;
+right: 5px;
+border: solid blue;
+width: 30px;
+border-radius: 10px;
+margin: 10px;
+z-index: 1;
+background-color: blue;
+color: white;
+font-style: italic;
+}
+
+.quizzes{
+  border: solid 2px whitesmoke;
+  background-color: blue;
+  
+}
+
+.comment-session{
+ 
+ margin-top: 20px;
+ display: flex;
+ flex-direction: row;
+ height: 300px;
+}
+.review-point{
+  border: solid 2px whitesmoke;
+  width: 15%;
+  margin-left: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.review-point p{
+padding-left: 60px;
+}
+
+.review-box{
+  border: solid 2px skyblue;
+  width: 80%;
+  border-radius: 20px;
+
+  
+}

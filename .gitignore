@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environment directories
+venv/
+env/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+
+# Distribution / packaging
+*.egg
+*.egg-info
+dist/
+build/
+*.zip
+
+# IDE/editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+
+# MacOS Finder metadata
+.DS_Store
+
+# Logs
+*.log
+
+# SQLite database files
+*.sqlite3
+*.db
+
+# Secret configuration files
+config.py
+*.env
+
+# Miscellaneous
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Operating system files
+Thumbs.db
+Desktop.ini

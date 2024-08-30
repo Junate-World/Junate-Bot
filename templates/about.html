@@ -1,0 +1,144 @@
+{% extends 'base.html' %}{% block title %}Login Page{% endblock %}
+{% block content %}
+
+<style>
+    
+.body{
+align-items: center;
+justify-content: center;
+background-color: skyblue;
+overflow: hidden;
+}
+
+.loader{
+width: 10em;
+height: 10em;
+border: 0.25em solid white;
+font-size: 10px;
+border-radius: 1em;
+position: absolute;
+mix-blend-mode: screen;
+}
+
+.loader span{
+width: 10em;
+height: 10em;
+border: 0.25em solid white;
+font-size: 10px;
+border-radius: 1em;
+position: absolute;
+mix-blend-mode: screen;
+}
+
+
+
+.loader{
+background-color: dodgerblue;
+animation: rotating 2s linear infinite;
+}
+
+@keyframes rotating {
+to {
+  transform: rotate(1turn);
+}
+}
+
+.loader span {
+animation: de-rotating 4s linear infinite;
+}
+
+@keyframes de-rotating {
+from, to{
+transform: rotate(0deg) scale(0.5);
+}
+50% {
+transform: rotate(-180deg) scale(1.2);
+}
+}
+
+.loader span:nth-child(1) {
+top: 5em;
+left: 5em;
+background-color: gold;
+}
+
+
+.loader span:nth-child(2) {
+top: -5em;
+left: 5em;
+background-color: hotpink;
+}
+
+.loader span:nth-child(3) {
+top: 5em;
+left: -5em;
+background-color: mediumpurple;
+}
+
+.loader span:nth-child(4) {
+top: -5em;
+left: -5em;
+background-color: limegreen;
+}
+
+.table{
+text-align: center;
+}
+</style>
+<div class="reg">
+
+  <div class="identity body">
+    <table  class="table table-hover table-light" border="0" bgcolor="white">
+      <thead>
+          <tr>
+              <th scope="col">Junate World</th>
+          </tr>
+      </thead>
+      <tbody>
+              <tr>
+                <td>py(flask) & JS</td>
+              </tr>
+      </tbody>
+  </table>
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+      
+  <div class="write">
+    <p class="mission">
+      Welcome to the About page. Please like our page and ensure to leave a review on the comment session below to enable us improve where necessary. Thank you once again for making us your number one data management expert. This is still under construction. You will be redirected to home page.
+    </p>
+  </div>
+  <div class="register">
+    <form method="post" action="/store">
+      <div class="new">
+        <p class="form-item formling Store">Store Your Info</p>
+        <input class="form-item formling" type="text" placeholder="Enter Anything" name="info">
+        <button type="submit" class="form-button">Store</button>
+        <a class="form-item formly forgot" href="#" >Return to login page</a>
+        <a class="form-item formly signup" href="#" >Go to sign-up page</a>
+        
+      </div>
+    </form>
+   </div>
+</div>
+
+<div class="comment-session">
+  <div class="review-point">
+    <p>Reviews</p>
+    <img src="https://mimo.app/i/beach-dog.png">
+  </div>
+  <div class="review-box">
+    <ul>
+      {% for item in storage %}
+        <li id="itema">{{ item }} <a href="{{ url_for('delete', index=loop.index0) }}">Delete</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+</div>
+{% endblock %}
