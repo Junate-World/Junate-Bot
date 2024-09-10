@@ -172,9 +172,17 @@ h3{
   color: #6f52f3; /* Change color to distinguish bot messages */
 }
 .message2, .bot2 {
-  color: red; /* Change color to distinguish bot messages */
+  color: rgb(0, 255, 106); /* Change color to distinguish bot messages */
 }
-
+.Me{
+  display: flex;
+  justify-content: flex-end;
+  background-color:skyblue;
+  border: solid 1px skyblue;
+  border-radius: 11px;
+  height: 22px;
+  padding-right: 5px;
+}
 
 .write{
   border: solid 2px whitesmoke;
@@ -341,7 +349,7 @@ font-style: italic;
 
 .quizzes{
   border: solid 2px whitesmoke;
-  background-color: blue;
+  background-color: lightgreen;
   
 }
 
@@ -370,11 +378,35 @@ padding-left: 60px;
   border: solid 2px skyblue;
   width: 80%;
   border-radius: 20px;
-
-  
+  overflow-y: auto;
 }
 #messenger{
   font-size: 15px;
   margin-top: -15px;
   display: none;
+}
+
+#lista{
+  list-style: none;
+}
+.listic{
+  border: solid 1px lightgreen;
+  background-color: lightgreen;
+  height: 22px;
+  border-radius: 11px;
+  padding-left: 9px;
+  margin-bottom: 3px;
+}
+
+.blue{
+  border: solid 1px blue;
+  background-color: blue;
+}
+
+.darkred{
+  border: solid 1px darkred;
+  background-color: darkred; 
+}
+.expert, .inter{
+  color: white;
 }

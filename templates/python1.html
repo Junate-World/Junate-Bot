@@ -1,0 +1,292 @@
+{% extends 'base.html' %}{% block title %}Quiz{% endblock %} 
+{% block content %}
+
+    <style>
+      *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.app{
+  background: #fff;
+  width: 90%;
+  max-width: 600px;
+  margin: 10px auto 10px;
+  border-radius: 10px;
+  padding: 30px;
+}
+.app h1{
+  font-size: 25px;
+  color: #001e4d;
+  font-weight: 600;
+  border-bottom: 1px solid #333;
+  padding-bottom: 30px;
+
+}
+.quiz{
+  padding: 20px 0;
+}
+.quiz h2{
+  font-size: 18px;
+  color: #001e4d;
+  font-weight: 600;
+}
+.btn{
+  background: #fff;
+  color: #222;
+  font-weight: 500;
+  width: 100%;
+  border: 1px solid #222;
+  padding: 5px;
+  margin: 10px 0;
+  text-align: left;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn:hover:not([disabled]){
+  background: #222;
+  color: #fff;
+}
+.btn:disabled{
+  cursor: no-drop;
+}
+#next-btn, #next-level{
+  background: #001e4d;
+  color: #fff;
+  font-weight: 500;
+  width: 150px;
+  border: 0;
+  padding: 5px;
+  margin: 20px auto 0;
+  border-radius: 4px;
+  cursor: pointer;
+  display: none;
+}
+.correct{
+  background: #6e4aff;
+}
+.incorrect{
+  background: #6e4aff;
+}
+.exit_quiz{
+  display: flex;
+  justify-content: flex-end;
+}
+h1{
+  display: flex;
+  justify-content: center;
+}
+    </style>
+   <div class="quizzes">
+    <div class="app">
+      <h1>Python Beginner Level</h1>
+      <a class="exit_quiz" href="quiz">Exit</a>
+      <div class="quiz">
+        <h2 id="question">Questions</h2>
+        <div id="answer-buttons">
+          <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+          <button class="btn">Answer 4</button>
+        </div>
+        <button id="next-btn">Next</button>
+        <button id="next-level" onclick="navigate()">Next Level</button>
+      </div>
+    </div>
+   </div> 
+    
+    
+    <script>
+      const questions = [
+  {
+    question: "Which of these operators is used for exponentiation in Python?",
+    answers: [
+      { text: "^", correct: false},
+      { text: "**", correct: true},
+      { text: "//", correct: false},
+      { text: "%", correct: false},
+    ]
+  },
+  {
+    question: "Which one of these is a valid variable name in Python?",
+    answers: [
+      { text: "2myvar", correct: false},
+      { text: "my-var", correct: false},
+      { text: "my_var", correct: true},
+      { text: "my var", correct: false},
+    ]
+  },
+  {
+    question: "Which method can be used to remove any whitespace from both the beginning and the end of a string?",
+    answers: [
+      { text: "trim()", correct: false},
+      { text: "ptrim()", correct: false},
+      { text: "strip()", correct: true},
+      { text: "len()", correct: false},
+    ]
+  },
+  {
+    question: "What is the correct way to create a list in Python?",
+    answers: [
+      { text: "list = {1, 2, 3}", correct: false},
+      { text: "list = [1, 2, 3]", correct: true},
+      { text: "list = (1, 2, 3)", correct: false},
+      { text: "list = <1, 2, 3>", correct: false},
+    ]
+  },
+  {
+    question: "How do you create a variable with the floating number 2.8 in Python?",
+    answers: [
+      { text: "x = int(2.8)", correct: false},
+      { text: "x = float(2.8)", correct: false},
+      { text: "x = 2.8", correct: false},
+      { text: "B and C", correct: true},
+    ]
+  },
+  {
+    question: "What is the correct file extension for Python files?",
+    answers: [
+      { text: ".pyt", correct: false},
+      { text: ".pyth", correct: false},
+      { text: ".py", correct: true},
+      { text: ".pt", correct: false},
+    ]
+  },
+  {
+    question: "Which of the following is used to create a function in Python?",
+    answers: [
+      { text: "def", correct: true},
+      { text: "function", correct: false},
+      { text: "func", correct: false},
+      { text: "lambda", correct: false},
+    ]
+  },
+  {
+    question: "What data type is the object below?\n x = 10",
+    answers: [
+      { text: "String", correct: false},
+      { text: "Integer", correct: true},
+      { text: "Float", correct: false},
+      { text: "Boolean", correct: false},
+    ]
+  },
+  {
+    question: "How do you insert COMMENTS in Python code?",
+    answers: [
+      { text: "//This is a comment", correct: false},
+      { text: "#This is a comment", correct: true},
+      { text: "<*This is a comment*>", correct: false},
+      { text: "/*This is a comment*/", correct: false},
+    ]
+  },
+  {
+    question: "What is the correct syntax to output 'Hello, World' in Python?",
+    answers: [
+      { text: "echo 'Hello, World'", correct: false},
+      { text: "print('Hello, World')", correct: true},
+      { text: "printf('Hello, World')", correct: false},
+      { text: "console.log('Hello, World')", correct: false},
+    ]
+  }
+];
+
+const questionElement = document.getElementById("question");
+const answerButtons = document.getElementById("answer-buttons");
+const nextButton = document.getElementById("next-btn");
+const nextLevelButton = document.getElementById("next-level");
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function startQuiz(){
+  currentQuestionIndex = 0;
+  score = 0;
+  nextButton.innerHTML = "Next";
+  showQuestion();
+}
+
+function showQuestion(){
+  resetState();
+  let currentQuestion = questions[currentQuestionIndex];
+  let questionNo = currentQuestionIndex + 1;
+  questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+
+  currentQuestion.answers.forEach(answer => {
+    const button = document.createElement("button");
+    button.innerHTML = answer.text;
+    button.classList.add("btn");
+    answerButtons.appendChild(button);
+    if(answer.correct){
+      button.dataset.correct = answer.correct;
+    }
+    button.addEventListener("click", selectAnswer);
+  });
+}
+
+function resetState(){
+  nextButton.style.display = "none";
+  while(answerButtons.firstChild){
+    answerButtons.removeChild(answerButtons.firstChild);
+  }
+}
+
+function selectAnswer(e){
+  const selectedBtn = e.target;
+  const isCorrect = selectedBtn.dataset.correct === "true";
+  if(isCorrect){
+    selectedBtn.classList.add("correct");
+    score++;
+  }else{
+    selectedBtn.classList.add("incorrect");
+  }
+  Array.from(answerButtons.children).forEach(button => {
+    button.disabled = true;
+  });
+  nextButton.style.display = "block";
+}
+
+function showScore(){
+  resetState();
+  nextButton.innerHTML = "Play Again";
+  nextButton.style.display = "block";
+ if(score === 10){
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!. Hurray!!! You won. You can now try out the next level`;
+    nextLevelButton.innerHTML = "Next Level";
+    nextLevelButton.style.display = "block";
+
+  }else if(score === 9){
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!. So close but try again.`;
+  }else{
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!. You need to put in more effort.`;
+  }  
+}
+
+function handleNextButton(){
+  currentQuestionIndex++;
+  if(currentQuestionIndex < questions.length){
+    showQuestion();
+  }else{
+    showScore();
+  }
+}
+
+function navigate() {
+    window.location.href = '#';
+}
+
+nextButton.addEventListener("click", ()=>{
+  if(currentQuestionIndex < questions.length){
+    handleNextButton();
+  }else{
+    startQuiz();
+  }
+})
+
+startQuiz();
+    </script>
+
+{% endblock %}

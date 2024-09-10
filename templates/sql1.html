@@ -1,0 +1,292 @@
+{% extends 'base.html' %}{% block title %}Quiz{% endblock %} 
+{% block content %}
+
+    <style>
+      *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.app{
+  background: #fff;
+  width: 90%;
+  max-width: 600px;
+  margin: 10px auto 10px;
+  border-radius: 10px;
+  padding: 30px;
+}
+.app h1{
+  font-size: 25px;
+  color: #001e4d;
+  font-weight: 600;
+  border-bottom: 1px solid #333;
+  padding-bottom: 30px;
+
+}
+.quiz{
+  padding: 20px 0;
+}
+.quiz h2{
+  font-size: 18px;
+  color: #001e4d;
+  font-weight: 600;
+}
+.btn{
+  background: #fff;
+  color: #222;
+  font-weight: 500;
+  width: 100%;
+  border: 1px solid #222;
+  padding: 5px;
+  margin: 10px 0;
+  text-align: left;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn:hover:not([disabled]){
+  background: #222;
+  color: #fff;
+}
+.btn:disabled{
+  cursor: no-drop;
+}
+#next-btn, #next-level{
+  background: #001e4d;
+  color: #fff;
+  font-weight: 500;
+  width: 150px;
+  border: 0;
+  padding: 5px;
+  margin: 20px auto 0;
+  border-radius: 4px;
+  cursor: pointer;
+  display: none;
+}
+.correct{
+  background: #6e4aff;
+}
+.incorrect{
+  background: #6e4aff;
+}
+.exit_quiz{
+  display: flex;
+  justify-content: flex-end;
+}
+h1{
+  display: flex;
+  justify-content: center;
+}
+    </style>
+   <div class="quizzes">
+    <div class="app">
+      <h1>SQL Beginner Level</h1>
+      <a class="exit_quiz" href="quiz">Exit</a>
+      <div class="quiz">
+        <h2 id="question">Questions</h2>
+        <div id="answer-buttons">
+          <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+          <button class="btn">Answer 4</button>
+        </div>
+        <button id="next-btn">Next</button>
+        <button id="next-level" onclick="navigate()">Next Level</button>
+      </div>
+    </div>
+   </div> 
+    
+    
+    <script>
+      const questions = [
+  {
+    question: "What is a primary key in a relational database?",
+    answers: [
+      { text: "A key that is used to encrypt the database", correct: false},
+      { text: "A key that uniquely identifies each record in a table", correct: true},
+      { text: "A key that is used for indexing data", correct: false},
+      { text: "A key that links two tables together", correct: false},
+    ]
+  },
+  {
+    question: "Which SQL command is used to retrieve data from a database?",
+    answers: [
+      { text: "INSERT", correct: false},
+      { text: "UPDATE", correct: false},
+      { text: "DELETE", correct: false},
+      { text: "SELECT", correct: true},
+    ]
+  },
+  {
+    question: "What does SQL stand for?",
+    answers: [
+      { text: "Structured Query Language", correct: true},
+      { text: "Simple Query Language", correct: false},
+      { text: "Sequential Query Language", correct: false},
+      { text: "Standard Query Language", correct: false},
+    ]
+  },
+  {
+    question: "Which of the following is NOT a type of join in SQL?",
+    answers: [
+      { text: "INNER JOIN", correct: false},
+      { text: "LEFT JOIN", correct: false},
+      { text: "RIGHT JOIN", correct: false},
+      { text: "CROSS JOIN", correct: true},
+    ]
+  },
+  {
+    question: "How do you select all the columns from a table named 'Employees'?",
+    answers: [
+      { text: "SELECT * FROM Employees", correct: true},
+      { text: "SELECT ALL FROM Employees", correct: false},
+      { text: "SELECT FROM Employees", correct: false},
+      { text: "SELECT COLUMNS FROM Employees", correct: false},
+    ]
+  },
+  {
+    question: "Which SQL clause is used to filter records?",
+    answers: [
+      { text: "GROUP BY", correct: false},
+      { text: "ORDER BY", correct: false},
+      { text: "WHERE", correct: true},
+      { text: "HAVING", correct: false},
+    ]
+  },
+  {
+    question: "Which SQL statement is used to insert new data into a database?",
+    answers: [
+      { text: "INSERT INTO", correct: true},
+      { text: "ADD TO", correct: false},
+      { text: "APPEND INTO", correct: false},
+      { text: "INSERT NEW", correct: false},
+    ]
+  },
+  {
+    question: "Which SQL function is used to return the number of rows in a table?",
+    answers: [
+      { text: "SUM()", correct: false},
+      { text: "COUNT()", correct: true},
+      { text: "TOTAL()", correct: false},
+      { text: "NUMBER()", correct: false},
+    ]
+  },
+  {
+    question: "How do you return only distinct values from a table?",
+    answers: [
+      { text: "SELECT DISTINCT", correct: true},
+      { text: "SELECT DIFFERENT", correct: false},
+      { text: "SELECT UNIQUE", correct: false},
+      { text: "SELECT NONDUPLICATE", correct: false},
+    ]
+  },
+  {
+    question: "In a database, what is normalization?",
+    answers: [
+      { text: "The process of backing up data", correct: false},
+      { text: "The process of creating data redundancy", correct: false},
+      { text: "The process of organizing data to reduce redundancy and improve integrity", correct: true},
+      { text: "The process of merging two databases", correct: false},
+    ]
+  }
+];
+
+const questionElement = document.getElementById("question");
+const answerButtons = document.getElementById("answer-buttons");
+const nextButton = document.getElementById("next-btn");
+const nextLevelButton = document.getElementById("next-level");
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function startQuiz(){
+  currentQuestionIndex = 0;
+  score = 0;
+  nextButton.innerHTML = "Next";
+  showQuestion();
+}
+
+function showQuestion(){
+  resetState();
+  let currentQuestion = questions[currentQuestionIndex];
+  let questionNo = currentQuestionIndex + 1;
+  questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+
+  currentQuestion.answers.forEach(answer => {
+    const button = document.createElement("button");
+    button.innerHTML = answer.text;
+    button.classList.add("btn");
+    answerButtons.appendChild(button);
+    if(answer.correct){
+      button.dataset.correct = answer.correct;
+    }
+    button.addEventListener("click", selectAnswer);
+  });
+}
+
+function resetState(){
+  nextButton.style.display = "none";
+  while(answerButtons.firstChild){
+    answerButtons.removeChild(answerButtons.firstChild);
+  }
+}
+
+function selectAnswer(e){
+  const selectedBtn = e.target;
+  const isCorrect = selectedBtn.dataset.correct === "true";
+  if(isCorrect){
+    selectedBtn.classList.add("correct");
+    score++;
+  }else{
+    selectedBtn.classList.add("incorrect");
+  }
+  Array.from(answerButtons.children).forEach(button => {
+    button.disabled = true;
+  });
+  nextButton.style.display = "block";
+}
+
+function showScore(){
+  resetState();
+  nextButton.innerHTML = "Play Again";
+  nextButton.style.display = "block";
+ if(score === 10){
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!. Hurray!!! You won. You can now try out the next level`;
+    nextLevelButton.innerHTML = "Next Level";
+    nextLevelButton.style.display = "block";
+
+  }else if(score === 9){
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!. So close but try again.`;
+  }else{
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!. You need to put in more effort.`;
+  }  
+}
+
+function handleNextButton(){
+  currentQuestionIndex++;
+  if(currentQuestionIndex < questions.length){
+    showQuestion();
+  }else{
+    showScore();
+  }
+}
+
+function navigate() {
+    window.location.href = '#';
+}
+
+nextButton.addEventListener("click", ()=>{
+  if(currentQuestionIndex < questions.length){
+    handleNextButton();
+  }else{
+    startQuiz();
+  }
+})
+
+startQuiz();
+    </script>
+
+{% endblock %}

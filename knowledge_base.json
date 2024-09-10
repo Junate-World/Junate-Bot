@@ -11,6 +11,14 @@
     {
       "question": "how old are you?",
       "answer": "I am an Artificial Intelligence with no age."
+    },
+    {
+      "question": "thanks.",
+      "answer": "You are welcome. Let me know if you need any assistance. Happy coding.."
+    },
+    {
+      "question": "what's today's date?",
+      "answer": "Please check your calendar, mobile phone or any time related device to get today's date."
     }
   ]
 }

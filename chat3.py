@@ -1,11 +1,13 @@
 from flask import Flask, request, redirect, url_for, render_template, jsonify
 import json
 from difflib import get_close_matches
+from time import sleep
 
 app = Flask(__name__)
 
 # In-memory storage
 storage = []
+reviews = []
 
 def load_knowledge_base(file_path: str) -> dict:
     """Load the knowledge base from a JSON file."""
@@ -69,9 +71,57 @@ def login():
 def quiz():
     return render_template('quiz.html')
 
+@app.route('/sql1')
+def sql_1():
+    return render_template('sql1.html')
+
+@app.route('/sql2')
+def sql_2():
+    return render_template('sql2.html')
+
+@app.route('/sql3')
+def sql_3():
+    return render_template('sql3.html')
+
+@app.route('/javascript1')
+def javascript_1():
+    return render_template('javascript1.html')
+
+@app.route('/sql2')
+def javascript_2():
+    return render_template('javascript2.html')
+
+@app.route('/javasript3')
+def javascript_3():
+    return render_template('javascript3.html')
+
+@app.route('/python1')
+def python_1():
+    return render_template('python1.html')
+
+@app.route('/python2')
+def python_2():
+    return render_template('python2.html')
+@app.route('/python3')
+def python_3():
+    return render_template('python3.html')
+
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', reviews=reviews)
+
+@app.route('/about/add', methods=['POST'])
+def add_review():
+    review = request.form['review']
+    reviews.append(review)
+    return redirect(url_for('about'))
+
+@app.route('/reviews/delete/<int:review_id>')
+def delete_review(review_id):
+    if 0 <= review_id < len(reviews):
+        reviews.pop(review_id)
+    return redirect(url_for('about'))
+
 
 @app.route('/chat')
 def chat_page():
@@ -86,8 +136,10 @@ def chat():
     
     if best_match:
         answer = get_answer_for_question(best_match, knowledge_base)
+        sleep(2)
         response = answer
     else:
+        sleep(2)
         response = "I don't know the answer. Can you teach me?"
     
     return jsonify({'response': response})
@@ -98,8 +150,9 @@ def update_knowledge():
     new_answer = request.json.get('new_answer')
     
     if new_answer:
+        sleep(2)
         update_knowledge_base(user_input, new_answer, knowledge_base_file)
-        response = "Thank you! I learned a new response!"
+        response = "Thank you! I learned a new response! Please reload the script so I could fetch the new response from the knowledge base when requested."
     else:
         response = "Update skipped."
 

@@ -35,7 +35,7 @@
       var userInput = document.getElementById('user_input').value;
       var chatBox = document.getElementById('chat-box');
 
-      chatBox.innerHTML += '<div><strong>You:</strong> ' + userInput + '</div><br>';
+      chatBox.innerHTML += '<div class="Me"><strong></strong> ' + userInput + '</div><br>';
 
       fetch('/chat', {
           method: 'POST',

@@ -84,6 +84,18 @@ background-color: limegreen;
 .table{
 text-align: center;
 }
+
+#list{
+  list-style: none;
+  padding: 10px;
+}
+#itema{
+  border: solid 1 skyblue;
+  background-color: skyblue;
+  height: 22px;
+  border-radius: 11px;
+  padding-left: 11px;
+}
 </style>
 <div class="reg">
 
@@ -110,15 +122,15 @@ text-align: center;
       
   <div class="write">
     <p class="mission">
-      Welcome to the About page. Please like our page and ensure to leave a review on the comment session below to enable us improve where necessary. Thank you once again for making us your number one data management expert. This is still under construction. You will be redirected to home page.
+      Welcome to the About page. Please like our page and ensure to leave a review on the comment session below to enable us improve where necessary. Thank you once again for making us your number one data management expert. This site is still under construction.
     </p>
   </div>
   <div class="register">
-    <form method="post" action="/store">
+    <form method="POST" action="{{ url_for('add_review') }}">
       <div class="new">
         <p class="form-item formling Store">Store Your Info</p>
-        <input class="form-item formling" type="text" placeholder="Enter Anything" name="info">
-        <button type="submit" class="form-button">Store</button>
+        <input class="form-item formling" type="text" placeholder="Enter Review" name="review" required>
+        <button type="submit" class="form-button">Post Review</button>
         <a class="form-item formly forgot" href="#" >Return to login page</a>
         <a class="form-item formly signup" href="#" >Go to sign-up page</a>
         
@@ -133,9 +145,9 @@ text-align: center;
     <img src="https://mimo.app/i/beach-dog.png">
   </div>
   <div class="review-box">
-    <ul>
-      {% for item in storage %}
-        <li id="itema">{{ item }} <a href="{{ url_for('delete', index=loop.index0) }}">Delete</a></li>
+    <ul id="list">
+      {% for review in reviews %}
+        <li id="itema">{{ review }} <a href="{{ url_for('delete_review', review_id=loop.index0) }}">&times;</a></li><br>
       {% endfor %}
     </ul>
   </div>
