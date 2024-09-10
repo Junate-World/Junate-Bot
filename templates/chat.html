@@ -44,7 +44,7 @@
       })
       .then(response => response.json())
       .then(data => {
-          chatBox.innerHTML += '<div class="message"><strong class="bot">Bot:</strong> ' + data.response + '</div><br>';
+          chatBox.innerHTML += '<div class="message"><strong class="bot"></strong> ' + data.response + '</div><br>';
           document.getElementById('user_input').value = '';
           chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom
 
@@ -58,7 +58,7 @@
                   })
                   .then(response => response.json())
                   .then(data => {
-                      chatBox.innerHTML += '<div class="message2"><strong class="bot2">Bot:</strong> ' + data.response + '</div><br>';
+                      chatBox.innerHTML += '<div class="message2"><strong class="bot2"></strong> ' + data.response + '</div><br>';
                       chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom
                   });
               }

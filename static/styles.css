@@ -167,6 +167,10 @@ h3{
  padding: 10px;
  overflow-y: auto;
  max-height: 400px;
+ background-image: url('images/sky.jpg');
+ background-position: center;
+ background-size: cover;
+ background-repeat: no-repeat;
 }
 .message, .bot {
   color: #6f52f3; /* Change color to distinguish bot messages */
@@ -175,14 +179,25 @@ h3{
   color: rgb(0, 255, 106); /* Change color to distinguish bot messages */
 }
 .Me{
+  color: black;
   display: flex;
   justify-content: flex-end;
   background-color:skyblue;
   border: solid 1px skyblue;
-  border-radius: 11px;
+  border-radius: 6px 0px 6px 6px;
   height: 22px;
-  padding-right: 5px;
+  padding-right: 9px;
 }
+
+.message, .bot, .message2, .bot2 {
+  color: black;
+  background-color:#6f52f3;
+  border: solid 1px #6f52f3;
+  border-radius: 0px 6px 6px 6px;
+  padding: 2px;
+  
+}
+
 
 .write{
   border: solid 2px whitesmoke;

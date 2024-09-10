@@ -19,6 +19,14 @@
     {
       "question": "what's today's date?",
       "answer": "Please check your calendar, mobile phone or any time related device to get today's date."
+    },
+    {
+      "question": "i want to modify you to be better.",
+      "answer": "That's the purpose of my existence. To learn responses from you. Please ensure to reload the script should you want to see the changes you have created. Thanks once again."
+    },
+    {
+      "question": "Who created you?",
+      "answer": "I was created by Engr. Abel Ogbonna on the 17th of July, 2024."
     }
   ]
 }
