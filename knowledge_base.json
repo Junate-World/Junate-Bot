@@ -27,6 +27,30 @@
     {
       "question": "Who created you?",
       "answer": "I was created by Engr. Abel Ogbonna on the 17th of July, 2024."
+    },
+    {
+      "question": "how can i modify you?",
+      "answer": "You can modify me by teaching me accurate responses that is not available in my knowledge base. Anytime you see an alert at the top of the screen, it means I am lacking such response to your question and requires you to skip or teach me the response. Once you type in the response, ensure to restart the script so i can fetch the response when needed."
+    },
+    {
+      "question": "can you make mistake?",
+      "answer": "Yes, I can make mistakes, just like any other system or person. While I strive to provide accurate and helpful information, there may be times when I misunderstand a question, provide incomplete information, or make an error in coding or technical details.\n\nIf you ever notice something that doesn't seem right, feel free to point it out, and I'll do my best to correct it!"
+    },
+    {
+      "question": "what is flask application?",
+      "answer": "Flask is a lightweight, micro web framework for Python. It is designed to make it easy to build web applications by providing the essentials while allowing flexibility for developers to add the features they need.\n\nKey Features of Flask:\nLightweight and Simple: Flask is considered a microframework because it doesn\u2019t require particular tools or libraries. It keeps the core simple, allowing developers to extend it as needed.\nBuilt-in Development Server: Flask provides a built-in server to run applications locally for testing and development.\nFlexible: Flask doesn\u2019t come with pre-defined ways to structure projects or enforce particular components, making it flexible for different types of applications.\nSupports Extensions: Flask can be easily extended with additional libraries or plugins to add features like database support, authentication, or form validation (e.g., Flask-SQLAlchemy, Flask-Login).\nJinja2 Templating: Flask uses Jinja2 for templating, allowing you to build dynamic web pages.\nRouting: It allows you to define routes (URLs) and associate them with Python functions, making it simple to map URLs to specific functionalities."
+    },
+    {
+      "question": "what is flask?",
+      "answer": "Flask is a lightweight, micro web framework for Python. It is designed to make it easy to build web applications by providing the essentials while allowing flexibility for developers to add the features they need.\n\nKey Features of Flask:\nLightweight and Simple: Flask is considered a microframework because it doesn\u2019t require particular tools or libraries. It keeps the core simple, allowing developers to extend it as needed.\nBuilt-in Development Server: Flask provides a built-in server to run applications locally for testing and development.\nFlexible: Flask doesn\u2019t come with pre-defined ways to structure projects or enforce particular components, making it flexible for different types of applications.\nSupports Extensions: Flask can be easily extended with additional libraries or plugins to add features like database support, authentication, or form validation (e.g., Flask-SQLAlchemy, Flask-Login).\nJinja2 Templating: Flask uses Jinja2 for templating, allowing you to build dynamic web pages.\nRouting: It allows you to define routes (URLs) and associate them with Python functions, making it simple to map URLs to specific functionalities."
+    },
+    {
+      "question": "what is pip (package installer for python)?",
+      "answer": "Pip is the package installer for Python. It allows you to install and manage additional libraries and dependencies that are not included in the standard Python library. Pip fetches these libraries from the Python Package Index (PyPI), a repository of software for the Python programming language.\n\nKey Features of Pip:\nInstall packages: Pip lets you install libraries that add specific functionalities to your Python projects (e.g., Flask, Django, NumPy).\nManage dependencies: Pip ensures that required dependencies are installed and up-to-date.\nUninstall packages: You can also remove packages that are no longer needed.\nVirtual environments: Pip can be used with virtual environments to isolate dependencies for individual projects."
+    },
+    {
+      "question": "what is pip?",
+      "answer": "Pip is the package installer for Python. It allows you to install and manage additional libraries and dependencies that are not included in the standard Python library. Pip fetches these libraries from the Python Package Index (PyPI), a repository of software for the Python programming language.\n\nKey Features of Pip:\nInstall packages: Pip lets you install libraries that add specific functionalities to your Python projects (e.g., Flask, Django, NumPy).\nManage dependencies: Pip ensures that required dependencies are installed and up-to-date.\nUninstall packages: You can also remove packages that are no longer needed.\nVirtual environments: Pip can be used with virtual environments to isolate dependencies for individual projects."
     }
   ]
 }

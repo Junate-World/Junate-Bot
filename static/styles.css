@@ -94,11 +94,80 @@ background-image: conic-gradient(from 45deg, red, yellow, gray, pink);
 
 
 .reg{
- 
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 }
+
+.reg1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  }
+
+.chatspace1{
+  border: solid 1px white;
+  height: 40px;
+  width: 150px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+}
+.chatspace1-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.chatspace2{
+  border: solid 1px white;
+  height: 40px;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.chatspace2-box{
+  border: solid 1px skyblue;
+  border-radius: 15px;
+}
+
+.chatspace2_input, .chatspace2_button{
+  height: 30px;
+  border-radius: 15px;
+}
+
+.chatspace2_button, button{
+  width: auto;
+  border: white;
+  color: black;
+  background-color: skyblue;
+  cursor: grabbing;
+}
+
+.chatspace2_input {
+  width: 600px;
+  padding: 10px;
+  border: 1px solid white;
+  font-size: 16px;
+  overflow-wrap: break-word; /* Ensure words wrap properly */
+  white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+  height: auto;
+  min-height: 40px; /* Minimum height */
+}
+.chatspace2_input:focus {
+  outline: none;
+  border-color: white; /* Change border color on focus */
+}
+
+.chatspace3{
+  border: solid 1px white;
+  height: 40px;
+  width: 300px;
+}
+
+
 
 .identity{
  width: 300px;
@@ -157,9 +226,10 @@ h3{
  display: flex;
  flex-direction: column;
  text-align: center;
+ justify-content: space-around;
 }
 
-#chat-box{
+.chat-boxy{
  border: solid 1px whitesmoke;
  border-radius: 5px;
  width: 600px;
@@ -167,34 +237,58 @@ h3{
  padding: 10px;
  overflow-y: auto;
  max-height: 400px;
- background-image: url('images/sky.jpg');
- background-position: center;
- background-size: cover;
- background-repeat: no-repeat;
 }
+.changeImage_1{
+  background-image: url('images/Teachme.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.changeImage_2{
+  background-image: url('images/cloud.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+ }
+
+ .changeImage_3{
+  background-image: url('images/candle.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+ }
+
 .message, .bot {
   color: #6f52f3; /* Change color to distinguish bot messages */
 }
 .message2, .bot2 {
   color: rgb(0, 255, 106); /* Change color to distinguish bot messages */
 }
+
 .Me{
-  color: black;
+  color: white;
+  background-color: rgb(49, 48, 48);
+  border: solid 1px black;
+  border-radius: 7px 0px 7px 7px;
+  padding: 3px;
+}
+.Me2{
   display: flex;
   justify-content: flex-end;
-  background-color:skyblue;
-  border: solid 1px skyblue;
-  border-radius: 6px 0px 6px 6px;
-  height: 22px;
-  padding-right: 9px;
+
 }
 
-.message, .bot, .message2, .bot2 {
-  color: black;
-  background-color:#6f52f3;
-  border: solid 1px #6f52f3;
-  border-radius: 0px 6px 6px 6px;
-  padding: 2px;
+.bot{
+  display: flex;
+  justify-content: flex-start;
+
+}
+.message{
+  color: white;
+  background-color: rgb(49, 48, 48);
+  border: solid 1px black;
+  border-radius: 0px 7px 7px 7px;
+  padding: 3px;
   
 }
 
@@ -230,8 +324,27 @@ text-align: right;
 display: flex;
 flex-direction: column;
 margin: 15px;
-
 }
+
+.newbie{
+  border: solid 1px white;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  align-items: center;
+  }
+
+.register2{
+  
+  border: solid 2px skyblue;
+  border-radius: 20px;
+  height: 300px;
+  width: 300px;
+  padding: 5px;
+  margin-right: 5px;
+  }
+    
+
 .form-item, button{
 border-radius: 5px;
 height: 25px;
